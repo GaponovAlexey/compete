@@ -1,9 +1,12 @@
 import { ethers } from 'ethers';
 import Image from 'next/image';
+import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 
 const Header = () => {
   const [account, setAccount] = useState<string | null>(null);
+  const {asPath} = useRouter();
+ 
 
   const handleConnect = async () => {
     try {
@@ -15,7 +18,7 @@ const Header = () => {
         method: 'eth_requestAccounts',
       });
 
-      const web3Provider = new ethers.JsonRpcProvider('http://localhost:3000');
+      const web3Provider = new ethers.JsonRpcProvider(asPath);
       console.log('web3Provider', web3Provider);
 
       setAccount(accounts[0]);
@@ -50,7 +53,7 @@ const Header = () => {
             <div className="zkSync_one">zkSync</div>
           </div>
           <div onClick={handleConnect} className="menu_two_connect">
-            {account ? 'yes' : 'no'}
+            {account ? account : 'Connect'}
           </div>
         </div>
       </div>
