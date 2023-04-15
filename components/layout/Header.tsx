@@ -2,7 +2,7 @@ import Image from 'next/image';
 
 const Header = () => {
   const handleConnect = async () => {
-    if (!window.ethereum as any) {
+    if (!window.ethereum) {
       console.log('da');
     } 
     console.log("window.ethereum",window.ethereum )
