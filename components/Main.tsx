@@ -1,7 +1,9 @@
 import { useState } from 'react';
 
+
 const Main = () => {
   const [max, setMax] = useState(0);
+  
 
   return (
     <div className="main_wrapper">

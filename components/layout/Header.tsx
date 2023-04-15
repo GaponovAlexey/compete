@@ -1,6 +1,13 @@
 import Image from 'next/image';
-
 const Header = () => {
+  const handleConnect = async () => {
+    if (!window.ethereum as any) {
+      console.log('da');
+    } 
+    console.log("window.ethereum",window.ethereum )
+    
+  };
+
   return (
     <div className="header_wrap">
       <div className="header_main">
@@ -23,9 +30,11 @@ const Header = () => {
         <div className="header_menu_two">
           <div className="menu_two_dot">...</div>
           <div className="menu_two_sync">
-            <div className='zkSync_one'>zkSync</div>
+            <div className="zkSync_one">zkSync</div>
           </div>
-          <div className="menu_two_connect">Connect</div>
+          <div onClick={handleConnect} className="menu_two_connect">
+            Connect
+          </div>
         </div>
       </div>
     </div>
