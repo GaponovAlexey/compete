@@ -1,36 +1,26 @@
-import { useEffect, useState } from 'react';
-import Web3 from 'web3';
+import { useState } from 'react';
+
+
 
 const Main = () => {
   // let w3 = new Web3(window.ethereum)
   // let contractP2PTrade = new w3.eth.Contract(p2pTrade, smartContractAddress);
-  const web3 = new Web3('https://testnet.era.zksync.dev');
-  console.log("web3", web3)
 
-  
-  const erc20Abi : any = ['./ABI/ZkSync.json']; 
-
-  const WETH = new web3.eth.Contract(erc20Abi, '0x20b28B1e4665FFf290650586ad76E977EAb90c5D');
-  // const LINK = new web3.eth.Contract(erc20Abi, '0x40609141Db628BeEE3BfAB8034Fc2D8278D0Cc78');
-  // const USDC = new web3.eth.Contract(erc20Abi, '0x0faF6df7054946141266420b43783387A78d82A9');
-  // const DAI = new web3.eth.Contract(erc20Abi, '0x3e7676937A7E96CFB7616f255b9AD9FF47363D4b');
-  // const wBTC = new web3.eth.Contract(erc20Abi, '0x0BfcE1D53451B4a8175DD94e6e029F7d8a701e9c');
-
-  useEffect(() => {
-    const load = async () => {
-      const balance = await WETH.methods.balanceOf('0xYourAddress').call();
-      console.log('WETH balance:', balance);
-    }
-    load()
-  },[])
+ 
 
 
+  // useEffect(() => {
+
+  // const balance =  WETH.methods.balanceOf('0xYourAddress').call();
+  // console.log('WETH balance:', balance);
+  // },[])
   const [max, setMax] = useState(0);
 
   return (
     <div className="main_wrapper">
       <div className="main_wrapper_right">
-        <div className="main_content_wrapper">aф
+        <div className="main_content_wrapper">
+          aф
           <div className="top_menu">
             <div className="text-[32px] cursor-pointer">Exchange</div>
             <div className="flex">
