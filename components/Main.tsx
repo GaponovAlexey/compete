@@ -1,6 +1,10 @@
-import { useState } from "react"
+import { TransContext } from "@/context"
+import { useContext, useState } from "react"
 
 const Main = () => {
+  const { connectWallet, currentAccount, formData, setFormData, handleChange } =
+    useContext(TransContext) as any
+
   const [max, setMax] = useState(0)
 
   return (

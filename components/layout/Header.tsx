@@ -1,13 +1,10 @@
 import { TransContext } from "@/context"
 import Image from "next/image"
-import { useRouter } from "next/router"
 import { useContext } from "react"
 
 const Header = () => {
-  const { connectWallet, currentAccount } = useContext(TransContext) as any
-  const { asPath } = useRouter()
-
-  console.log("currentAccount", currentAccount)
+  const { connectWallet, currentAccount, formData, setFormData, handleChange } =
+    useContext(TransContext) as any
 
   return (
     <div className="header_wrap">

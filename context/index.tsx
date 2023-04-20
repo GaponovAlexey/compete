@@ -22,22 +22,24 @@ const getEtherContract = () => {
 
 export const TransProviderApp = ({ children }: any) => {
   const [currentAccount, setCurrentAccount] = useState()
-  const [connectedAccount, setConnectedAccount] = useState()
   const [formData, setFormData] = useState({
-    addressTo: "",
-    amount: "",
-    keyword: "",
-    message: "",
+    addressTo: "1",
+    amount: "2",
+    keyword: "3",
+    message: "4",
   })
+
+  const handleChange = (e, name) => {
+    setFormData((el) => ({ ...el, [name]: e }))
+  }
+
+  console.log("formData", formData)
 
   const checkConnect = async () => {
     if (!ethereum) return alert("Please install Metamask")
 
     const account = await ethereum.request({ method: "eth_accounts" })
     console.log("ac", account)
-    if (account) {
-      setConnectedAccount(account)
-    }
   }
 
   // connect
@@ -68,13 +70,18 @@ export const TransProviderApp = ({ children }: any) => {
 
   useEffect(() => {
     checkConnect()
-    if (connectedAccount) {
-      connectWallet()
-    }
   }, [])
 
   return (
-    <TransContext.Provider value={{ connectWallet, currentAccount }}>
+    <TransContext.Provider
+      value={{
+        connectWallet,
+        currentAccount,
+        formData,
+        setFormData,
+        handleChange,
+      }}
+    >
       {children}
     </TransContext.Provider>
   )
