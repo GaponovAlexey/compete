@@ -1,26 +1,12 @@
-import { useState } from 'react';
-
-
+import { useState } from "react"
 
 const Main = () => {
-  // let w3 = new Web3(window.ethereum)
-  // let contractP2PTrade = new w3.eth.Contract(p2pTrade, smartContractAddress);
-
- 
-
-
-  // useEffect(() => {
-
-  // const balance =  WETH.methods.balanceOf('0xYourAddress').call();
-  // console.log('WETH balance:', balance);
-  // },[])
-  const [max, setMax] = useState(0);
+  const [max, setMax] = useState(0)
 
   return (
     <div className="main_wrapper">
       <div className="main_wrapper_right">
         <div className="main_content_wrapper">
-          aф
           <div className="top_menu">
             <div className="text-[32px] cursor-pointer">Exchange</div>
             <div className="flex">
@@ -59,7 +45,7 @@ const Main = () => {
                     onClick={(e) => setMax(12)}
                     className="absolute -left-16 bottom-2"
                   >
-                    {' '}
+                    {" "}
                     | Max
                   </button>
                 </div>
@@ -91,7 +77,7 @@ const Main = () => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Main;
+export default Main

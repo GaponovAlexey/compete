@@ -1,32 +1,13 @@
-import { ethers } from 'ethers';
-import Image from 'next/image';
-import { useRouter } from 'next/router';
-import { useEffect, useState } from 'react';
+import { TransContext } from "@/context"
+import Image from "next/image"
+import { useRouter } from "next/router"
+import { useContext } from "react"
 
 const Header = () => {
-  const [account, setAccount] = useState<string | null>(null);
-  const { asPath } = useRouter();
+  const { connectWallet, currentAccount } = useContext(TransContext) as any
+  const { asPath } = useRouter()
 
-  const handleConnect = async () => {
-    try {
-      if (typeof window === 'undefined' || !window.ethereum) {
-        throw new Error('not connect...');
-      }
-
-      const accounts = await window.ethereum.request({
-        method: 'eth_requestAccounts',
-      });
-
-      const provider = new ethers.JsonRpcProvider(asPath);
-      console.log('web3Provider', provider);
-      console.log('balanse', await provider.getBalance(accounts[0]));
-
-      setAccount(accounts[0]);
-      console.log('account', accounts);
-    } catch (err) {
-      console.error(err);
-    }
-  };
+  console.log("currentAccount", currentAccount)
 
   return (
     <div className="header_wrap">
@@ -52,13 +33,13 @@ const Header = () => {
           <div className="menu_two_sync">
             <div className="zkSync_one">zkSync</div>
           </div>
-          <div onClick={handleConnect} className="menu_two_connect">
-            {account ? account : 'Connect'}
+          <div onClick={connectWallet} className="menu_two_connect">
+            {currentAccount ? currentAccount : "Connect"}
           </div>
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Header;
+export default Header
