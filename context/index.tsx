@@ -23,10 +23,10 @@ const getEtherContract = () => {
 export const TransProviderApp = ({ children }: any) => {
   const [currentAccount, setCurrentAccount] = useState()
   const [formData, setFormData] = useState({
-    addressTo: "1",
-    amount: "2",
-    keyword: "3",
-    message: "4",
+    addressTo: "",
+    amount: "",
+    keyword: "",
+    message: "",
   })
 
   const handleChange = (e, name) => {
